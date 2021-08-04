@@ -25,6 +25,7 @@ public class NewClient {
 		System.out.println(response.getCancelled());
 		
 		newChannel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+		
 	}
 
 }
