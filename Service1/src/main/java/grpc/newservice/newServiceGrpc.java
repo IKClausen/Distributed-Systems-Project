@@ -59,6 +59,38 @@ public final class newServiceGrpc {
      return getGetFirstStringMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.newservice.containsString,
+      grpc.newservice.containsString> getGetSecondStringMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetSecondString",
+      requestType = grpc.newservice.containsString.class,
+      responseType = grpc.newservice.containsString.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<grpc.newservice.containsString,
+      grpc.newservice.containsString> getGetSecondStringMethod() {
+    io.grpc.MethodDescriptor<grpc.newservice.containsString, grpc.newservice.containsString> getGetSecondStringMethod;
+    if ((getGetSecondStringMethod = newServiceGrpc.getGetSecondStringMethod) == null) {
+      synchronized (newServiceGrpc.class) {
+        if ((getGetSecondStringMethod = newServiceGrpc.getGetSecondStringMethod) == null) {
+          newServiceGrpc.getGetSecondStringMethod = getGetSecondStringMethod = 
+              io.grpc.MethodDescriptor.<grpc.newservice.containsString, grpc.newservice.containsString>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "newService", "GetSecondString"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.newservice.containsString.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.newservice.containsString.getDefaultInstance()))
+                  .setSchemaDescriptor(new newServiceMethodDescriptorSupplier("GetSecondString"))
+                  .build();
+          }
+        }
+     }
+     return getGetSecondStringMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -93,6 +125,13 @@ public final class newServiceGrpc {
       asyncUnimplementedUnaryCall(getGetFirstStringMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getSecondString(grpc.newservice.containsString request,
+        io.grpc.stub.StreamObserver<grpc.newservice.containsString> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetSecondStringMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -102,6 +141,13 @@ public final class newServiceGrpc {
                 grpc.newservice.containsString,
                 grpc.newservice.containsString>(
                   this, METHODID_GET_FIRST_STRING)))
+          .addMethod(
+            getGetSecondStringMethod(),
+            asyncServerStreamingCall(
+              new MethodHandlers<
+                grpc.newservice.containsString,
+                grpc.newservice.containsString>(
+                  this, METHODID_GET_SECOND_STRING)))
           .build();
     }
   }
@@ -131,6 +177,14 @@ public final class newServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getGetFirstStringMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getSecondString(grpc.newservice.containsString request,
+        io.grpc.stub.StreamObserver<grpc.newservice.containsString> responseObserver) {
+      asyncServerStreamingCall(
+          getChannel().newCall(getGetSecondStringMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -156,6 +210,14 @@ public final class newServiceGrpc {
     public grpc.newservice.containsString getFirstString(grpc.newservice.containsString request) {
       return blockingUnaryCall(
           getChannel(), getGetFirstStringMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<grpc.newservice.containsString> getSecondString(
+        grpc.newservice.containsString request) {
+      return blockingServerStreamingCall(
+          getChannel(), getGetSecondStringMethod(), getCallOptions(), request);
     }
   }
 
@@ -187,6 +249,7 @@ public final class newServiceGrpc {
   }
 
   private static final int METHODID_GET_FIRST_STRING = 0;
+  private static final int METHODID_GET_SECOND_STRING = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -207,6 +270,10 @@ public final class newServiceGrpc {
       switch (methodId) {
         case METHODID_GET_FIRST_STRING:
           serviceImpl.getFirstString((grpc.newservice.containsString) request,
+              (io.grpc.stub.StreamObserver<grpc.newservice.containsString>) responseObserver);
+          break;
+        case METHODID_GET_SECOND_STRING:
+          serviceImpl.getSecondString((grpc.newservice.containsString) request,
               (io.grpc.stub.StreamObserver<grpc.newservice.containsString>) responseObserver);
           break;
         default:
@@ -271,6 +338,7 @@ public final class newServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new newServiceFileDescriptorSupplier())
               .addMethod(getGetFirstStringMethod())
+              .addMethod(getGetSecondStringMethod())
               .build();
         }
       }

@@ -8,6 +8,8 @@ service newService {
 
 	rpc GetFirstString(containsString) returns (containsString){} 
 	
+	//server streaming
+	rpc GetSecondString(containsString) returns (stream containsString){}
 }
 
 message containsString {

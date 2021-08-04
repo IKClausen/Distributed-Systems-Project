@@ -29,10 +29,11 @@ public final class NewServiceImpl {
   static {
     java.lang.String[] descriptorData = {
       "\n\020newService.proto\"%\n\016containsString\022\023\n\013" +
-      "firstString\030\001 \001(\t2B\n\nnewService\0224\n\016GetFi" +
+      "firstString\030\001 \001(\t2{\n\nnewService\0224\n\016GetFi" +
       "rstString\022\017.containsString\032\017.containsStr" +
-      "ing\"\000B#\n\017grpc.newserviceB\016NewServiceImpl" +
-      "P\001b\006proto3"
+      "ing\"\000\0227\n\017GetSecondString\022\017.containsStrin" +
+      "g\032\017.containsString\"\0000\001B#\n\017grpc.newservic" +
+      "eB\016NewServiceImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
