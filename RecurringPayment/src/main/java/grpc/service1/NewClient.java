@@ -20,6 +20,7 @@ public class NewClient {
 		
 		newServiceBlockingStub bstub = newServiceGrpc.newBlockingStub(newChannel);
 		
+		//Calling the server and receiving a response
 		cancelled response = bstub.cancelRecurringPayment(cPayment);
 		
 		System.out.println(response.getCancelled());
