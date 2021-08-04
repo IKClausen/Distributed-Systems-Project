@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option java_package = "grpc.service1";
+option java_multiple_files = true;
+option java_outer_classname = "NewServiceImpl";
+
+service newService {
+
+	//rpc SetRecurringPayment(stream paymentDetails) returns (confirmation){} 
+	
+	rpc CancelRecurringPayment(cancelPayment) returns (cancelled){}
+	
+}
+
+
+
+message paymentDetails {
+	string name = 1;
+	string account = 2;
+	double amount = 3; 
+}
+
+message confirmation {
+	string confirmation = 1;
+}
+
+message cancelPayment {
+	string cancel = 1;
+}
+
+message cancelled {
+	string cancelled = 1;
+}
+
