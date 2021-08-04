@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_package = "grpc.service4";
+option java_multiple_files = true;
+option java_outer_classname = "NewServiceImpl";
+
+
+service newService {
+
+		      // Client requests to view balance
+	rpc accountAlerts(alertRequest) returns (stream alertResponse);
+
+}
+
+
+
+     message alertRequest {
+	     string request = 1;
+  }
+
+
+
+    message alertResponse {
+	    string alerts = 1;
+  }
