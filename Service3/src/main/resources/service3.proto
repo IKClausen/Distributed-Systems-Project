@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option java_package = "grpc.service3";
+option java_multiple_files = true;
+option java_outer_classname = "NewServiceImpl";
+
+
+// Unary gRPC definition
+service newService {
+	      // Client requests to view balance
+	rpc viewBalance(balanceRequest) returns (balanceResponse);
+
+	      // View account transaction history
+	rpc viewTransactions(transactionRequest) returns (transactionResponse);
+}
+
+
+    message balanceRequest {
+	   string request = 1;
+   }
+
+
+   message balanceResponse {
+	  string balance = 1;
+   }
+
+
+   message transactionRequest {
+   	int32  accountID = 1;
+   	string transactionTitle = 2;
+
+   }
+
+
+   message transactionResponse {
+	string title = 1;
+	string transactionStatus = 2;
+
+}
