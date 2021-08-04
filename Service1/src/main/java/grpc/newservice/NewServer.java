@@ -46,9 +46,34 @@ public class NewServer {
 			
 			containsString.Builder response = containsString.newBuilder();
 			
-			response.setFirstString("Our first response string");
+			response.setFirstString("Our first response string" + firstString);
 			
 			//Send out message
+			responseObserver.onNext(response.build());
+			
+			responseObserver.onCompleted();
+		}
+		
+		@Override
+		public void getSecondString(containsString request, StreamObserver<containsString> responseObserver) {
+			
+			//Find out what was sent by the client
+			String firstString = request.getFirstString();
+			System.out.println("firstString is: " + firstString);
+			
+			//Now build our response
+			
+			containsString.Builder response = containsString.newBuilder();
+			
+			response.setFirstString("Our first response string: " + firstString);
+			
+			//Send out message
+			responseObserver.onNext(response.build());
+			
+			response.setFirstString("Our second response string: ");
+			responseObserver.onNext(response.build());
+			
+			response.setFirstString("Our third response string: ");
 			responseObserver.onNext(response.build());
 			
 			responseObserver.onCompleted();
