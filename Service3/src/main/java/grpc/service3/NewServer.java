@@ -19,7 +19,7 @@ public class NewServer {
      }
 
 	private void start() throws IOException, InterruptedException {
-		// TODO Auto-generated method stub
+
 		System.out.println("Starting gRPC Server"); 
 		
 		int port = 50051; 

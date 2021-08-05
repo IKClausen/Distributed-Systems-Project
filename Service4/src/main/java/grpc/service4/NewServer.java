@@ -1,9 +1,9 @@
 package grpc.service4;
 
-import grpc.service3.balanceRequest;
-import grpc.service3.balanceResponse;
-import grpc.service3.newServiceGrpc.newServiceImplBase;
+
+
 import grpc.service4.NewServer;
+import grpc.service4.newServiceGrpc.newServiceImplBase;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
@@ -33,18 +33,28 @@ public class NewServer {
 	// Extend abstract base class 
 		static class NewServerImpl extends newServiceImplBase {
 			
-			@Override
+			
 			public void accountAlerts(alertRequest request, StreamObserver<alertResponse> responseObserver) {
 				
 				//Client 
-				String alertrequest = request.getAlertRequest(); 
-				System.out.println("Balance Request" + balanceRequest); 
+				String alertRequest = request.getRequest(); 
+				System.out.println("Balance Request" + alertRequest); 
+				
 				
 				//Response 
 				
 				alertResponse.Builder response = alertResponse.newBuilder(); 
-				alertResponse.setAlertResponse("E M P T Y"); 
+				alertResponse.setAlerts("Balance Request" + response); 
 				
+				//Send out message
+				responseObserver.onNext(response.build());
+				
+				response.setAlerts("Our second response string: ");
+				responseObserver.onNext(response.build());
+				
+				
+				response.setAlerts("Our third response string: ");
+				responseObserver.onNext(response.build());
 				//Output 
 				responseObserver.onNext(response.build());
 				
