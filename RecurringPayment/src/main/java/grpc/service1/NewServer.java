@@ -23,7 +23,7 @@ public class NewServer {
 		// TODO Auto-generated method stub
 		System.out.println("Starting gRPC Server");
 		
-		int port = 50052;
+		int port = 50054;
 		server = ServerBuilder.forPort(port).addService(new NewServerImpl()).build().start();
 		
 		System.out.println("Server running on port: " + port);
@@ -53,6 +53,38 @@ public class NewServer {
 				
 				responseObserver.onCompleted();
 			}
-		}
+			
+			@Override
+			public StreamObserver<paymentDetails>setRecurringPayment(StreamObserver<confirmation> responseObserver) {
+				System.out.println("inside streaming implementation");
+				return new StreamObserver<paymentDetails>() {
 
+					@Override
+					public void onNext(paymentDetails value) {
+						System.out.println("Message received from client: " + value.getName());
+						System.out.println("Message received from client: " + value.getAccount());
+						System.out.println("Message received from client: " + value.getAmount());
+					}
+
+					@Override
+					public void onError(Throwable t) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					//Client has indicated to server that it has finished streaming
+					@Override
+					public void onCompleted() {
+						// TODO Auto-generated method stub
+						
+						confirmation.Builder response = confirmation.newBuilder();
+						
+						response.setConfirmation("Message from server, streaming now completed!");
+						
+						responseObserver.onNext(response.build());
+						responseObserver.onCompleted();
+					}
+				};
+			}
+		}
 }

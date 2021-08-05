@@ -27,6 +27,38 @@ public final class newServiceGrpc {
   public static final String SERVICE_NAME = "newService";
 
   // Static method descriptors that strictly reflect the proto.
+  private static volatile io.grpc.MethodDescriptor<grpc.service1.paymentDetails,
+      grpc.service1.confirmation> getSetRecurringPaymentMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "SetRecurringPayment",
+      requestType = grpc.service1.paymentDetails.class,
+      responseType = grpc.service1.confirmation.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+  public static io.grpc.MethodDescriptor<grpc.service1.paymentDetails,
+      grpc.service1.confirmation> getSetRecurringPaymentMethod() {
+    io.grpc.MethodDescriptor<grpc.service1.paymentDetails, grpc.service1.confirmation> getSetRecurringPaymentMethod;
+    if ((getSetRecurringPaymentMethod = newServiceGrpc.getSetRecurringPaymentMethod) == null) {
+      synchronized (newServiceGrpc.class) {
+        if ((getSetRecurringPaymentMethod = newServiceGrpc.getSetRecurringPaymentMethod) == null) {
+          newServiceGrpc.getSetRecurringPaymentMethod = getSetRecurringPaymentMethod = 
+              io.grpc.MethodDescriptor.<grpc.service1.paymentDetails, grpc.service1.confirmation>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "newService", "SetRecurringPayment"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.service1.paymentDetails.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.service1.confirmation.getDefaultInstance()))
+                  .setSchemaDescriptor(new newServiceMethodDescriptorSupplier("SetRecurringPayment"))
+                  .build();
+          }
+        }
+     }
+     return getSetRecurringPaymentMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<grpc.service1.cancelPayment,
       grpc.service1.cancelled> getCancelRecurringPaymentMethod;
 
@@ -88,6 +120,13 @@ public final class newServiceGrpc {
 
     /**
      */
+    public io.grpc.stub.StreamObserver<grpc.service1.paymentDetails> setRecurringPayment(
+        io.grpc.stub.StreamObserver<grpc.service1.confirmation> responseObserver) {
+      return asyncUnimplementedStreamingCall(getSetRecurringPaymentMethod(), responseObserver);
+    }
+
+    /**
+     */
     public void cancelRecurringPayment(grpc.service1.cancelPayment request,
         io.grpc.stub.StreamObserver<grpc.service1.cancelled> responseObserver) {
       asyncUnimplementedUnaryCall(getCancelRecurringPaymentMethod(), responseObserver);
@@ -95,6 +134,13 @@ public final class newServiceGrpc {
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            getSetRecurringPaymentMethod(),
+            asyncClientStreamingCall(
+              new MethodHandlers<
+                grpc.service1.paymentDetails,
+                grpc.service1.confirmation>(
+                  this, METHODID_SET_RECURRING_PAYMENT)))
           .addMethod(
             getCancelRecurringPaymentMethod(),
             asyncUnaryCall(
@@ -122,6 +168,14 @@ public final class newServiceGrpc {
     protected newServiceStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new newServiceStub(channel, callOptions);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<grpc.service1.paymentDetails> setRecurringPayment(
+        io.grpc.stub.StreamObserver<grpc.service1.confirmation> responseObserver) {
+      return asyncClientStreamingCall(
+          getChannel().newCall(getSetRecurringPaymentMethod(), getCallOptions()), responseObserver);
     }
 
     /**
@@ -187,6 +241,7 @@ public final class newServiceGrpc {
   }
 
   private static final int METHODID_CANCEL_RECURRING_PAYMENT = 0;
+  private static final int METHODID_SET_RECURRING_PAYMENT = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -219,6 +274,9 @@ public final class newServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_SET_RECURRING_PAYMENT:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.setRecurringPayment(
+              (io.grpc.stub.StreamObserver<grpc.service1.confirmation>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -270,6 +328,7 @@ public final class newServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new newServiceFileDescriptorSupplier())
+              .addMethod(getSetRecurringPaymentMethod())
               .addMethod(getCancelRecurringPaymentMethod())
               .build();
         }
