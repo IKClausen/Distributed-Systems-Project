@@ -59,38 +59,6 @@ public final class newServiceGrpc {
      return getGeneratePINMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<grpc.service2.credentials,
-      grpc.service2.authentication> getChangePINMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "ChangePIN",
-      requestType = grpc.service2.credentials.class,
-      responseType = grpc.service2.authentication.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-  public static io.grpc.MethodDescriptor<grpc.service2.credentials,
-      grpc.service2.authentication> getChangePINMethod() {
-    io.grpc.MethodDescriptor<grpc.service2.credentials, grpc.service2.authentication> getChangePINMethod;
-    if ((getChangePINMethod = newServiceGrpc.getChangePINMethod) == null) {
-      synchronized (newServiceGrpc.class) {
-        if ((getChangePINMethod = newServiceGrpc.getChangePINMethod) == null) {
-          newServiceGrpc.getChangePINMethod = getChangePINMethod = 
-              io.grpc.MethodDescriptor.<grpc.service2.credentials, grpc.service2.authentication>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-              .setFullMethodName(generateFullMethodName(
-                  "newService", "ChangePIN"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.service2.credentials.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.service2.authentication.getDefaultInstance()))
-                  .setSchemaDescriptor(new newServiceMethodDescriptorSupplier("ChangePIN"))
-                  .build();
-          }
-        }
-     }
-     return getChangePINMethod;
-  }
-
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -125,13 +93,6 @@ public final class newServiceGrpc {
       return asyncUnimplementedStreamingCall(getGeneratePINMethod(), responseObserver);
     }
 
-    /**
-     */
-    public io.grpc.stub.StreamObserver<grpc.service2.credentials> changePIN(
-        io.grpc.stub.StreamObserver<grpc.service2.authentication> responseObserver) {
-      return asyncUnimplementedStreamingCall(getChangePINMethod(), responseObserver);
-    }
-
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -141,13 +102,6 @@ public final class newServiceGrpc {
                 grpc.service2.credentials,
                 grpc.service2.confirmation>(
                   this, METHODID_GENERATE_PIN)))
-          .addMethod(
-            getChangePINMethod(),
-            asyncBidiStreamingCall(
-              new MethodHandlers<
-                grpc.service2.credentials,
-                grpc.service2.authentication>(
-                  this, METHODID_CHANGE_PIN)))
           .build();
     }
   }
@@ -176,14 +130,6 @@ public final class newServiceGrpc {
         io.grpc.stub.StreamObserver<grpc.service2.confirmation> responseObserver) {
       return asyncClientStreamingCall(
           getChannel().newCall(getGeneratePINMethod(), getCallOptions()), responseObserver);
-    }
-
-    /**
-     */
-    public io.grpc.stub.StreamObserver<grpc.service2.credentials> changePIN(
-        io.grpc.stub.StreamObserver<grpc.service2.authentication> responseObserver) {
-      return asyncBidiStreamingCall(
-          getChannel().newCall(getChangePINMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -226,7 +172,6 @@ public final class newServiceGrpc {
   }
 
   private static final int METHODID_GENERATE_PIN = 0;
-  private static final int METHODID_CHANGE_PIN = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -258,9 +203,6 @@ public final class newServiceGrpc {
         case METHODID_GENERATE_PIN:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.generatePIN(
               (io.grpc.stub.StreamObserver<grpc.service2.confirmation>) responseObserver);
-        case METHODID_CHANGE_PIN:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.changePIN(
-              (io.grpc.stub.StreamObserver<grpc.service2.authentication>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -313,7 +255,6 @@ public final class newServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new newServiceFileDescriptorSupplier())
               .addMethod(getGeneratePINMethod())
-              .addMethod(getChangePINMethod())
               .build();
         }
       }

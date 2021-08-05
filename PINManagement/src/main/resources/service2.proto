@@ -8,7 +8,7 @@ service newService {
 
 	rpc GeneratePIN(stream credentials) returns (confirmation){} 
 	
-	rpc ChangePIN(stream credentials) returns (stream authentication){}
+	//rpc ChangePIN(stream credentials) returns (stream authentication){}
 	
 }
 
