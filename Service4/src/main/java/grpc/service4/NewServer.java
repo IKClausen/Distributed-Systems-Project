@@ -46,7 +46,7 @@ public class NewServer {
 				//Response 
 				
 				alertResponse.Builder response = alertResponse.newBuilder(); 
-				alertResponse.setAlerts("Alert Request" + response); 
+				response.setAlerts("Alert Request" + response); 
 				
 				//Send out message
 				responseObserver.onNext(response.build());
