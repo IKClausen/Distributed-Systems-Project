@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_package = "grpc.service2";
+option java_multiple_files = true;
+option java_outer_classname = "NewServiceImpl";
+
+service newService {
+
+	rpc GeneratePIN(stream credentials) returns (confirmation){} 
+	
+	rpc ChangePIN(stream credentials) returns (stream authentication){}
+	
+}
+
+message credentials{
+	string password = 1;
+}
+
+message confirmation{
+	string confirmation = 1;
+}
+
+message authentication{
+	string authentication = 1;
+}

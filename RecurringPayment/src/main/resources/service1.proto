@@ -30,5 +30,6 @@ message cancelPayment {
 
 message cancelled {
 	string cancelled = 1;
+	
 }
 
