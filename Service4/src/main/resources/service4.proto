@@ -7,7 +7,7 @@ option java_outer_classname = "NewServiceImpl";
 
 service newService {
 
-		      // Client requests to view balance
+		      // Client requests account alerts - server  side streaming by using stream keyword
 	rpc accountAlerts(alertRequest) returns (stream alertResponse);
 
 }
