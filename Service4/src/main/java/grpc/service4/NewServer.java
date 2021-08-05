@@ -1,9 +1,11 @@
 package grpc.service4;
 
-import grpc.service3.balanceRequest;
-import grpc.service3.balanceResponse;
-import grpc.service3.newServiceGrpc.newServiceImplBase;
+
+
+import java.io.IOException;
+
 import grpc.service4.NewServer;
+import grpc.service4.newServiceGrpc.newServiceImplBase;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
@@ -12,13 +14,13 @@ public class NewServer {
 	
 	private Server server; 
     
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException, InterruptedException {
 		final NewServer theServer = new NewServer();
    	    theServer.start(); 
 
 	}
 
-	private void start() {
+	private void start() throws IOException, InterruptedException {
 	System.out.println("Starting gRPC Server"); 
 		
 		int port = 50051; 
@@ -33,18 +35,28 @@ public class NewServer {
 	// Extend abstract base class 
 		static class NewServerImpl extends newServiceImplBase {
 			
-			@Override
+			
 			public void accountAlerts(alertRequest request, StreamObserver<alertResponse> responseObserver) {
 				
 				//Client 
-				String alertrequest = request.getAlertRequest(); 
-				System.out.println("Balance Request" + balanceRequest); 
+				String alertRequest = request.getRequest(); 
+				System.out.println("Alert Request" + alertRequest); 
+				
 				
 				//Response 
 				
 				alertResponse.Builder response = alertResponse.newBuilder(); 
-				alertResponse.setAlertResponse("E M P T Y"); 
+				response.setAlerts("Alert Request" + response); 
 				
+				//Send out message
+				responseObserver.onNext(response.build());
+				
+				response.setAlerts("Still E M P T Y: ");
+				responseObserver.onNext(response.build());
+				
+				
+				response.setAlerts("Dont buy that!: ");
+				responseObserver.onNext(response.build());
 				//Output 
 				responseObserver.onNext(response.build());
 				

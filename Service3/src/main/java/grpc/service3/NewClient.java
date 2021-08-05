@@ -30,7 +30,9 @@ public class NewClient {
 	   
 	   newChannel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
 	
+	
 	}
 
+	
 	
 }
