@@ -6,9 +6,11 @@ option java_outer_classname = "NewServiceImpl";
 
 service newService {
 
+	// Client streaming
 	rpc GeneratePIN(stream credentials) returns (confirmation){} 
 	
-	//rpc ChangePIN(stream credentials) returns (stream authentication){}
+	// Bi-directional streaming
+	rpc ChangePIN(stream credentials) returns (stream authentication){}
 	
 }
 
