@@ -103,8 +103,7 @@ public class NewServer {
 					responseObserver.onCompleted();
 				}
 
-				
-	
+					
 			};
 		}
 	}
