@@ -1,6 +1,10 @@
 package grpc.service3;
 
+import java.io.IOException;
+import java.net.UnknownHostException;
 import java.util.concurrent.TimeUnit;
+
+import javax.jmdns.ServiceInfo;
 
 import grpc.service3.newServiceGrpc.newServiceBlockingStub;
 import io.grpc.ManagedChannel;
@@ -8,13 +12,20 @@ import io.grpc.ManagedChannelBuilder;
 
 public class NewClient {
 	
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, UnknownHostException, IOException {
 
-		// channel - Generic code to create channel 
+		//Discovery  
+		ServiceInfo serviceInfo; 
+		String service_type = "_grpc._tcp.local."; 
+		serviceInfo = ServiceDiscovery.run(service_type); 
 		
-		int port = 50051; 
+		int port = serviceInfo.getPort(); 
+		
+		// int port = 50051; No need for this method as this is done through jnDns discovery
+		
 		String host = "localHost"; 
 		
+		// channel - Generic code to create channel 
 	   ManagedChannel newChannel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build(); 
 	   
 	   // messages

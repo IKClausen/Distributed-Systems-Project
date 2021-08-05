@@ -1,5 +1,4 @@
 package grpc.service3;
-
 import java.io.IOException;
 
 import grpc.service3.newServiceGrpc.newServiceImplBase;
@@ -23,6 +22,10 @@ public class NewServer {
 		System.out.println("Starting gRPC Server"); 
 		
 		int port = 50051; 
+		String service_type = "_grpc._tcp.local.";
+		String service_name = "GrpcServer";
+		ServiceRegistration ssr = new ServiceRegistration();
+		ssr.run(port, service_type, service_name);
 		server = ServerBuilder.forPort(port).addService(new NewServerImpl()).build().start();
 		
 		System.out.println("Server running on port: " + port); 
