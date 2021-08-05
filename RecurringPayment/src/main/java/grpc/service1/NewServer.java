@@ -83,6 +83,7 @@ public class NewServer {
 						
 						responseObserver.onNext(response.build());
 						responseObserver.onCompleted();
+						
 					}
 				};
 			}
