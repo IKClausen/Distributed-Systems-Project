@@ -9,7 +9,7 @@ import javax.jmdns.ServiceEvent;
 import javax.jmdns.ServiceInfo;
 import javax.jmdns.ServiceListener;
 
-
+// Adding Listener and run method 
 public class ServiceDiscovery {
 
 	private int port; 
