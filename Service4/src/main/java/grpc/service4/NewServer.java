@@ -2,6 +2,8 @@ package grpc.service4;
 
 
 
+import java.io.IOException;
+
 import grpc.service4.NewServer;
 import grpc.service4.newServiceGrpc.newServiceImplBase;
 import io.grpc.Server;
@@ -12,13 +14,13 @@ public class NewServer {
 	
 	private Server server; 
     
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException, InterruptedException {
 		final NewServer theServer = new NewServer();
    	    theServer.start(); 
 
 	}
 
-	private void start() {
+	private void start() throws IOException, InterruptedException {
 	System.out.println("Starting gRPC Server"); 
 		
 		int port = 50051; 
@@ -38,22 +40,22 @@ public class NewServer {
 				
 				//Client 
 				String alertRequest = request.getRequest(); 
-				System.out.println("Balance Request" + alertRequest); 
+				System.out.println("Alert Request" + alertRequest); 
 				
 				
 				//Response 
 				
 				alertResponse.Builder response = alertResponse.newBuilder(); 
-				alertResponse.setAlerts("Balance Request" + response); 
+				alertResponse.setAlerts("Alert Request" + response); 
 				
 				//Send out message
 				responseObserver.onNext(response.build());
 				
-				response.setAlerts("Our second response string: ");
+				response.setAlerts("Still E M P T Y: ");
 				responseObserver.onNext(response.build());
 				
 				
-				response.setAlerts("Our third response string: ");
+				response.setAlerts("Dont buy that!: ");
 				responseObserver.onNext(response.build());
 				//Output 
 				responseObserver.onNext(response.build());
