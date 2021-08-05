@@ -37,13 +37,13 @@ public class NewServer {
 		public void viewBalance(balanceRequest request, StreamObserver<balanceResponse> responseObserver) {
 			
 			//Client 
-			String balancerequest = request.getBalanceRequest(); 
-			System.out.println("Balance Request" + balancerequest); 
+			String balanceRequest = request.getRequest(); 
+			System.out.println("Balance Request" + balanceRequest); 
 			
 			//Response 
 			
 			balanceResponse.Builder response = balanceResponse.newBuilder(); 
-			balanceResponse.setBalanceResponse("E M P T Y"); 
+			response.setBalance("E M P T Y"); 
 			
 			//Output 
 			responseObserver.onNext(response.build());

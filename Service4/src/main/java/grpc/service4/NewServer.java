@@ -34,7 +34,7 @@ public class NewServer {
 		static class NewServerImpl extends newServiceImplBase {
 			
 			@Override
-			public void viewBalance(alertRequest request, StreamObserver<alertResponse> responseObserver) {
+			public void accountAlerts(alertRequest request, StreamObserver<alertResponse> responseObserver) {
 				
 				//Client 
 				String alertrequest = request.getAlertRequest(); 

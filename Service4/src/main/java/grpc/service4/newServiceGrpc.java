@@ -88,7 +88,7 @@ public final class newServiceGrpc {
 
     /**
      * <pre>
-     * Client requests to view balance
+     * Client requests account alerts - server  side streaming by using stream keyword
      * </pre>
      */
     public void accountAlerts(grpc.service4.alertRequest request,
@@ -129,7 +129,7 @@ public final class newServiceGrpc {
 
     /**
      * <pre>
-     * Client requests to view balance
+     * Client requests account alerts - server  side streaming by using stream keyword
      * </pre>
      */
     public void accountAlerts(grpc.service4.alertRequest request,
@@ -159,7 +159,7 @@ public final class newServiceGrpc {
 
     /**
      * <pre>
-     * Client requests to view balance
+     * Client requests account alerts - server  side streaming by using stream keyword
      * </pre>
      */
     public java.util.Iterator<grpc.service4.alertResponse> accountAlerts(
