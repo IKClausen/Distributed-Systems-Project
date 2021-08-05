@@ -8,7 +8,7 @@ import io.grpc.ManagedChannelBuilder;
 
 public class NewClient {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 
 		// channel - Generic code to create channel 
 		
@@ -24,11 +24,12 @@ public class NewClient {
 	   
 	   newServiceBlockingStub bstub = newServiceGrpc.newBlockingStub(newChannel); 
 	   
-	   balance response = bstub.getResponse(br); 
+	   balanceResponse response = bstub.viewBalance(br); 
 	   
-	   System.out.println(response.getResponse());
+	   System.out.println(response.getBalance());
 	   
 	   newChannel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+	
 	}
 
 	
