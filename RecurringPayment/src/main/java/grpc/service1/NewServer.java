@@ -23,7 +23,7 @@ public class NewServer {
 		// TODO Auto-generated method stub
 		System.out.println("Starting gRPC Server");
 		
-		int port = 50054;
+		int port = 50056;
 		server = ServerBuilder.forPort(port).addService(new NewServerImpl()).build().start();
 		
 		System.out.println("Server running on port: " + port);
