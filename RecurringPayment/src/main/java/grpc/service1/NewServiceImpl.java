@@ -47,10 +47,11 @@ public final class NewServiceImpl {
       "me\030\001 \001(\t\022\017\n\007account\030\002 \001(\t\022\016\n\006amount\030\003 \001(" +
       "\001\"$\n\014confirmation\022\024\n\014confirmation\030\001 \001(\t\"" +
       "\037\n\rcancelPayment\022\016\n\006cancel\030\001 \001(\t\"\036\n\tcanc" +
-      "elled\022\021\n\tcancelled\030\001 \001(\t2D\n\nnewService\0226" +
-      "\n\026CancelRecurringPayment\022\016.cancelPayment" +
-      "\032\n.cancelled\"\000B!\n\rgrpc.service1B\016NewServ" +
-      "iceImplP\001b\006proto3"
+      "elled\022\021\n\tcancelled\030\001 \001(\t2\177\n\nnewService\0229" +
+      "\n\023SetRecurringPayment\022\017.paymentDetails\032\r" +
+      ".confirmation\"\000(\001\0226\n\026CancelRecurringPaym" +
+      "ent\022\016.cancelPayment\032\n.cancelled\"\000B!\n\rgrp" +
+      "c.service1B\016NewServiceImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

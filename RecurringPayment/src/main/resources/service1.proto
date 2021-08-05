@@ -6,7 +6,7 @@ option java_outer_classname = "NewServiceImpl";
 
 service newService {
 
-	//rpc SetRecurringPayment(stream paymentDetails) returns (confirmation){} 
+	rpc SetRecurringPayment(stream paymentDetails) returns (confirmation){} 
 	
 	rpc CancelRecurringPayment(cancelPayment) returns (cancelled){}
 	
