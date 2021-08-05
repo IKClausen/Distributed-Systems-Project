@@ -41,9 +41,11 @@ public final class NewServiceImpl {
       "\n\016service2.proto\"\037\n\013credentials\022\020\n\010passw" +
       "ord\030\001 \001(\t\"$\n\014confirmation\022\024\n\014confirmatio" +
       "n\030\001 \001(\t\"(\n\016authentication\022\026\n\016authenticat" +
-      "ion\030\001 \001(\t2<\n\nnewService\022.\n\013GeneratePIN\022\014" +
-      ".credentials\032\r.confirmation\"\000(\001B!\n\rgrpc." +
-      "service2B\016NewServiceImplP\001b\006proto3"
+      "ion\030\001 \001(\t2n\n\nnewService\022.\n\013GeneratePIN\022\014" +
+      ".credentials\032\r.confirmation\"\000(\001\0220\n\tChang" +
+      "ePIN\022\014.credentials\032\017.authentication\"\000(\0010" +
+      "\001B!\n\rgrpc.service2B\016NewServiceImplP\001b\006pr" +
+      "oto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
