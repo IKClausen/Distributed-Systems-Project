@@ -25,11 +25,11 @@ public class NewClient {
 			   
 			   newServiceBlockingStub bstub = newServiceGrpc.newBlockingStub(newChannel); 
 			   
-			   alertResponse response = bstub.accountAlerts(ar)  
+			   alertResponse response = bstub.accountAlerts(ar); 
 			   
 			   System.out.println(response.getAlerts());
 			   
-			   newChannel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+			     newChannel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
 		
 			
 			}

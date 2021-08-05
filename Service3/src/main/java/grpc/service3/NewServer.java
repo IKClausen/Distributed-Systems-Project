@@ -21,7 +21,7 @@ public class NewServer {
 
 		System.out.println("Starting gRPC Server"); 
 		
-		int port = 50051; 
+		int port = 50052; 
 		String service_type = "_grpc._tcp.local.";
 		String service_name = "GrpcServer";
 		ServiceRegistration ssr = new ServiceRegistration();
