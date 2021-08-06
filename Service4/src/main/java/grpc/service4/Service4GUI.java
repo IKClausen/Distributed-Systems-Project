@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 
 import grpc.service4.*;
 import grpc.service4.newServiceGrpc.newServiceBlockingStub;
+import grpc.service4.newServiceGrpc.newServiceStub;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
@@ -90,12 +91,15 @@ private static newServiceBlockingStub blockingStub;
 				   String accountA = textName1.getText(); 
 				   // adapting to method 
 				   
-				   accountAlerts request = accountAlerts.newBuilder().setRequest.build(); 
-				   accountAlerts response = blockingStub.getRequest(Request); 
+				   alertRequest request = alertRequest.newBuilder().setRequest(accountA).build(); 
+				   alertResponse response = newServiceStub.accountAlerts(alerts); 
 				   
 				  //  Populate the JTextArea 
-				   textResponse.append("Alert = Account is empty" + response.getRequest());
-				   System.out.println("Alert: " + response.getRequest()); 
+				   textResponse.append("Alert = Account is empty" + response.getAlerts());
+				   textResponse.append("Alert = Account is empty" + response.getAlerts());
+				   textResponse.append("Alert = Account is empty" + response.getAlerts());
+				   textResponse.append("Alert = Account is empty" + response.getAlerts());
+				   System.out.println("Alert: " + response.getAlerts()); 
 				   
 			   }
 		   }); 

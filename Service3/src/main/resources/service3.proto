@@ -7,11 +7,10 @@ option java_outer_classname = "NewServiceImpl";
 
 // Unary gRPC definition
 service newService {
+
 	      // Client requests to view balance
 	rpc viewBalance(balanceRequest) returns (balanceResponse);
 
-	      // View account transaction history
-// 	rpc viewTransactions(transactionRequest) returns (transactionResponse);
 }
 
 

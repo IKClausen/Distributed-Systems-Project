@@ -62,38 +62,6 @@ public final class newServiceGrpc {
      return getViewBalanceMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<grpc.service3.transactionRequest,
-      grpc.service3.transactionResponse> getViewTransactionsMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "viewTransactions",
-      requestType = grpc.service3.transactionRequest.class,
-      responseType = grpc.service3.transactionResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<grpc.service3.transactionRequest,
-      grpc.service3.transactionResponse> getViewTransactionsMethod() {
-    io.grpc.MethodDescriptor<grpc.service3.transactionRequest, grpc.service3.transactionResponse> getViewTransactionsMethod;
-    if ((getViewTransactionsMethod = newServiceGrpc.getViewTransactionsMethod) == null) {
-      synchronized (newServiceGrpc.class) {
-        if ((getViewTransactionsMethod = newServiceGrpc.getViewTransactionsMethod) == null) {
-          newServiceGrpc.getViewTransactionsMethod = getViewTransactionsMethod = 
-              io.grpc.MethodDescriptor.<grpc.service3.transactionRequest, grpc.service3.transactionResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "newService", "viewTransactions"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.service3.transactionRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.service3.transactionResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new newServiceMethodDescriptorSupplier("viewTransactions"))
-                  .build();
-          }
-        }
-     }
-     return getViewTransactionsMethod;
-  }
-
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -134,16 +102,6 @@ public final class newServiceGrpc {
       asyncUnimplementedUnaryCall(getViewBalanceMethod(), responseObserver);
     }
 
-    /**
-     * <pre>
-     * View account transaction history
-     * </pre>
-     */
-    public void viewTransactions(grpc.service3.transactionRequest request,
-        io.grpc.stub.StreamObserver<grpc.service3.transactionResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(getViewTransactionsMethod(), responseObserver);
-    }
-
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -153,13 +111,6 @@ public final class newServiceGrpc {
                 grpc.service3.balanceRequest,
                 grpc.service3.balanceResponse>(
                   this, METHODID_VIEW_BALANCE)))
-          .addMethod(
-            getViewTransactionsMethod(),
-            asyncUnaryCall(
-              new MethodHandlers<
-                grpc.service3.transactionRequest,
-                grpc.service3.transactionResponse>(
-                  this, METHODID_VIEW_TRANSACTIONS)))
           .build();
     }
   }
@@ -195,17 +146,6 @@ public final class newServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getViewBalanceMethod(), getCallOptions()), request, responseObserver);
     }
-
-    /**
-     * <pre>
-     * View account transaction history
-     * </pre>
-     */
-    public void viewTransactions(grpc.service3.transactionRequest request,
-        io.grpc.stub.StreamObserver<grpc.service3.transactionResponse> responseObserver) {
-      asyncUnaryCall(
-          getChannel().newCall(getViewTransactionsMethod(), getCallOptions()), request, responseObserver);
-    }
   }
 
   /**
@@ -237,16 +177,6 @@ public final class newServiceGrpc {
     public grpc.service3.balanceResponse viewBalance(grpc.service3.balanceRequest request) {
       return blockingUnaryCall(
           getChannel(), getViewBalanceMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * View account transaction history
-     * </pre>
-     */
-    public grpc.service3.transactionResponse viewTransactions(grpc.service3.transactionRequest request) {
-      return blockingUnaryCall(
-          getChannel(), getViewTransactionsMethod(), getCallOptions(), request);
     }
   }
 
@@ -281,21 +211,9 @@ public final class newServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getViewBalanceMethod(), getCallOptions()), request);
     }
-
-    /**
-     * <pre>
-     * View account transaction history
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<grpc.service3.transactionResponse> viewTransactions(
-        grpc.service3.transactionRequest request) {
-      return futureUnaryCall(
-          getChannel().newCall(getViewTransactionsMethod(), getCallOptions()), request);
-    }
   }
 
   private static final int METHODID_VIEW_BALANCE = 0;
-  private static final int METHODID_VIEW_TRANSACTIONS = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -317,10 +235,6 @@ public final class newServiceGrpc {
         case METHODID_VIEW_BALANCE:
           serviceImpl.viewBalance((grpc.service3.balanceRequest) request,
               (io.grpc.stub.StreamObserver<grpc.service3.balanceResponse>) responseObserver);
-          break;
-        case METHODID_VIEW_TRANSACTIONS:
-          serviceImpl.viewTransactions((grpc.service3.transactionRequest) request,
-              (io.grpc.stub.StreamObserver<grpc.service3.transactionResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -384,7 +298,6 @@ public final class newServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new newServiceFileDescriptorSupplier())
               .addMethod(getViewBalanceMethod())
-              .addMethod(getViewTransactionsMethod())
               .build();
         }
       }

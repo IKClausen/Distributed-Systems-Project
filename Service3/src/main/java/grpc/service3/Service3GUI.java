@@ -13,7 +13,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import grpc.service3.*;
 import grpc.service3.newServiceGrpc.newServiceBlockingStub;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
@@ -93,12 +92,12 @@ public class Service3GUI {
 			   String balanceR = textName1.getText(); 
 			   // adapting to method 
 			   
-			   viewBalance request = viewBalance.newBuilder().setBalanceRequest.build(); 
-			   viewBalance response = blockingStub.getRequest(Request); 
+			   balanceRequest request = balanceRequest.newBuilder().setRequest(balanceR).build(); 
+			   balanceResponse response = blockingStub.viewBalance(request); 
 			   
 			  //  Populate the JTextArea 
-			   textResponse.append("Balance = E M P T Y " + response.getRequest());
-			   System.out.println("Balance: " + response.getRequest()); 
+			   textResponse.append("Balance = E M P T Y " + response.getBalance());
+			   System.out.println("Balance: " + response.getBalance()); 
 		   }
 	   }); 
 	   

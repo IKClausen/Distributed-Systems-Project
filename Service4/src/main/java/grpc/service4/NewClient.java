@@ -1,12 +1,15 @@
 package grpc.service4;
 
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import javax.jmdns.ServiceInfo;
 
 import grpc.service4.newServiceGrpc.newServiceBlockingStub;
+import grpc.service4.newServiceGrpc.newServiceStub;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.stub.StreamObserver;
 
 public class NewClient {
 
@@ -29,17 +32,44 @@ public class NewClient {
 			   
 			   // Creating stub, passing channel to stub - stub is specific to service 
 			   // Asynch  
-			   newServiceBlockingStub bstub = newServiceGrpc.newBlockingStub(newChannel); 
+			   newServiceStub asyncstub = newServiceGrpc.newStub(newChannel); 
 			   
-			   alertResponse response = bstub.accountAlerts(ar); 
+			   CountDownLatch latch = new CountDownLatch(1); 
 			   
-			   
-			   
-			   System.out.println(response.getAlerts());
-			     newChannel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+				StreamObserver<alertResponse> responseObserver = new StreamObserver<alertResponse>() {
+
+					@Override
+					public void onNext(alertResponse value) {
+						// TODO Auto-generated method stub
+						System.out.println("Alert: " + value.getAlerts());
+					}
+
+					@Override
+					public void onError(Throwable t) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void onCompleted() {
+						// TODO Auto-generated method stub
+						System.out.println("Have a nice day");
+						latch.countDown();
+					} 
 		
+			};
 			
-			}
+			
+			responseObserver.onCompleted();
+			try {
+				latch.await(3L, TimeUnit.SECONDS);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 
-
+			       Thread.sleep(5000);
+			
+			newChannel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
     }
+			
+}

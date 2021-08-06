@@ -24,16 +24,6 @@ public final class NewServiceImpl {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_balanceResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_transactionRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_transactionRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_transactionResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_transactionResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -45,14 +35,9 @@ public final class NewServiceImpl {
     java.lang.String[] descriptorData = {
       "\n\016service3.proto\"!\n\016balanceRequest\022\017\n\007re" +
       "quest\030\001 \001(\t\"\"\n\017balanceResponse\022\017\n\007balanc" +
-      "e\030\001 \001(\t\"A\n\022transactionRequest\022\021\n\taccount" +
-      "ID\030\001 \001(\005\022\030\n\020transactionTitle\030\002 \001(\t\"?\n\023tr" +
-      "ansactionResponse\022\r\n\005title\030\001 \001(\t\022\031\n\021tran" +
-      "sactionStatus\030\002 \001(\t2}\n\nnewService\0220\n\013vie" +
-      "wBalance\022\017.balanceRequest\032\020.balanceRespo" +
-      "nse\022=\n\020viewTransactions\022\023.transactionReq" +
-      "uest\032\024.transactionResponseB!\n\rgrpc.servi" +
-      "ce3B\016NewServiceImplP\001b\006proto3"
+      "e\030\001 \001(\t2>\n\nnewService\0220\n\013viewBalance\022\017.b" +
+      "alanceRequest\032\020.balanceResponseB!\n\rgrpc." +
+      "service3B\016NewServiceImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -78,18 +63,6 @@ public final class NewServiceImpl {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_balanceResponse_descriptor,
         new java.lang.String[] { "Balance", });
-    internal_static_transactionRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_transactionRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_transactionRequest_descriptor,
-        new java.lang.String[] { "AccountID", "TransactionTitle", });
-    internal_static_transactionResponse_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_transactionResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_transactionResponse_descriptor,
-        new java.lang.String[] { "Title", "TransactionStatus", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
