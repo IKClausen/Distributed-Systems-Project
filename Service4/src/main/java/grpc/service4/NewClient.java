@@ -28,7 +28,7 @@ public class NewClient {
 			   alertRequest ar = alertRequest.newBuilder().setRequest("Fingers crossed").build(); 
 			   
 			   // Creating stub, passing channel to stub - stub is specific to service 
-			   
+			   // Asynch  
 			   newServiceBlockingStub bstub = newServiceGrpc.newBlockingStub(newChannel); 
 			   
 			   alertResponse response = bstub.accountAlerts(ar); 

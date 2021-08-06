@@ -11,7 +11,7 @@ service newService {
 	rpc viewBalance(balanceRequest) returns (balanceResponse);
 
 	      // View account transaction history
-	rpc viewTransactions(transactionRequest) returns (transactionResponse);
+// 	rpc viewTransactions(transactionRequest) returns (transactionResponse);
 }
 
 
@@ -25,15 +25,3 @@ service newService {
    }
 
 
-   message transactionRequest {
-   	int32  accountID = 1;
-   	string transactionTitle = 2;
-
-   }
-
-
-   message transactionResponse {
-	string title = 1;
-	string transactionStatus = 2;
-
-}
