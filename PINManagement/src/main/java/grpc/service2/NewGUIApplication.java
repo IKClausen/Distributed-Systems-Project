@@ -1,4 +1,4 @@
-package grpc.service1;
+package grpc.service2;
 
 import java.awt.EventQueue;
 import io.grpc.ManagedChannel;
@@ -16,18 +16,17 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import grpc.service1.newServiceGrpc.newServiceBlockingStub;
+import grpc.service2.newServiceGrpc.newServiceBlockingStub;
+import grpc.service2.newServiceGrpc.newServiceStub;
+import io.grpc.stub.StreamObserver;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-
-import grpc.service1.newServiceGrpc.newServiceBlockingStub;
-
 public class NewGUIApplication {
 	
-	private static newServiceBlockingStub blockingStub;
+	private static newServiceStub asyncStub;
 	
 	private JFrame frame;
 	private JTextField textName1;
@@ -55,13 +54,13 @@ public class NewGUIApplication {
 	 * */
 	public NewGUIApplication() {
 		
-		int port = 50056;
+		int port = 50061;
 		String host = "localhost";
 		
 		ManagedChannel newchannel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
 		
 		//stubs -- generate from proto
-		blockingStub = newServiceGrpc.newBlockingStub(newchannel);
+		asyncStub = newServiceGrpc.newStub(newchannel);
 		
 		initialize();
 		
@@ -95,7 +94,6 @@ public class NewGUIApplication {
 			//How wide should input box be? - doesn't affect number that can be entered
 			textName1.setColumns(10);
 			
-
 			
 			JButton btnSend = new JButton("Send our message to Server");
 			
@@ -117,13 +115,13 @@ public class NewGUIApplication {
 					
 					
 					
-					cancelPayment request = cancelPayment.newBuilder().setCancel(data).build();
-					cancelled response = blockingStub.cancelRecurringPayment(request);
+					credentials request = credentials.newBuilder().setPassword(data).build();
+					confirmation response = asyncStub.generatePIN(request);
 					
-					System.out.println("Response: " + response.getCancelled());
+					System.out.println("Response: " + response.getConfirmation());
 					
 					//populate the JTextArea in the panel
-					textResponse.append("reply:" + response.getCancelled());
+					textResponse.append("reply:" + response.getConfirmation());
 //					System.out.println("response: " + response.getCancelled());
 					
 								

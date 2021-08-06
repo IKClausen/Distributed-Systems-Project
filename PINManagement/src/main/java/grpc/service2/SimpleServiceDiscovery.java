@@ -75,7 +75,7 @@ public class SimpleServiceDiscovery {
 				JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
 				
 				//will discover the service based on service type
-				//String service_type = "_grpc._tcp.local";	
+				//String service_type = "_grpc._service2.local";	
 				
 				
 				//need to listen for services added/removed etc.
