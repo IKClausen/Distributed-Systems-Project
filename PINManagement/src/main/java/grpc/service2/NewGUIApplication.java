@@ -113,8 +113,7 @@ public class NewGUIApplication {
 					
 					String data = name1;
 					
-					
-					
+									
 					credentials request = credentials.newBuilder().setPassword(data).build();
 					confirmation response = asyncStub.generatePIN(request);
 					
