@@ -119,6 +119,9 @@ public final class newServiceGrpc {
   public static abstract class newServiceImplBase implements io.grpc.BindableService {
 
     /**
+     * <pre>
+     * Client streaming
+     * </pre>
      */
     public io.grpc.stub.StreamObserver<grpc.service2.credentials> generatePIN(
         io.grpc.stub.StreamObserver<grpc.service2.confirmation> responseObserver) {
@@ -126,6 +129,9 @@ public final class newServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Bi-directional streaming
+     * </pre>
      */
     public io.grpc.stub.StreamObserver<grpc.service2.credentials> changePIN(
         io.grpc.stub.StreamObserver<grpc.service2.authentication> responseObserver) {
@@ -171,6 +177,9 @@ public final class newServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Client streaming
+     * </pre>
      */
     public io.grpc.stub.StreamObserver<grpc.service2.credentials> generatePIN(
         io.grpc.stub.StreamObserver<grpc.service2.confirmation> responseObserver) {
@@ -179,6 +188,9 @@ public final class newServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Bi-directional streaming
+     * </pre>
      */
     public io.grpc.stub.StreamObserver<grpc.service2.credentials> changePIN(
         io.grpc.stub.StreamObserver<grpc.service2.authentication> responseObserver) {

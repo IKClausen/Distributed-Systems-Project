@@ -2,7 +2,6 @@ package grpc.service2;
 
 
 import grpc.service2.newServiceGrpc.newServiceImplBase;
-import grpc.service2.NewServiceImpl;
 import java.io.IOException;
 
 import grpc.service2.NewServer;
@@ -24,7 +23,7 @@ public class NewServer {
 	private void start() throws IOException, InterruptedException {
 		
 		System.out.println("Starting gRPC Server");
-		int port = 50058;
+		int port = 50061;
 		server = ServerBuilder.forPort(port).addService(new NewServerImpl()).build().start();
 		
 		System.out.println("Server running on port: " + port);
@@ -64,7 +63,7 @@ public class NewServer {
 					responseObserver.onCompleted();
 					
 				}
-	
+			
 			};
 						
 		}
@@ -73,19 +72,26 @@ public class NewServer {
 		
 		@Override
 		
-		public StreamObserver<credentials> changePIN(StreamObserver<authentication> responseObserver) {
+		public StreamObserver<credentials> changePIN(final StreamObserver<authentication> responseObserver) {
 			System.out.println("inside streaming implementation");
 			return new StreamObserver<credentials>() {
-
+				
+				int count;
 				@Override
 				public void onNext(credentials value) {
+					
+					count++;
 					// TODO Auto-generated method stub
-					System.out.println("Message received from client: " + value.getPassword());
+					System.out.println("credentials sent, number of times sent: " + count);
+					authentication reply1 = authentication.newBuilder().setAuthentication("First confirmation " + count + " :").build();
+					responseObserver.onNext(reply1);
+					if (count>2) {
+						authentication reply2 = authentication.newBuilder().setAuthentication("Second confirmation " + count + " :").build();
+						responseObserver.onNext(reply2);
+					}
 					
-					String pin = value.getPassword();
-					authentication reply = authentication.newBuilder().setAuthentication(pin).build();
+
 					
-					responseObserver.onNext(reply);
 					
 				}
 
@@ -98,9 +104,11 @@ public class NewServer {
 				@Override
 				public void onCompleted() {
 					// TODO Auto-generated method stub
-					System.out.println("Authentication completed ");
 					
+					authentication reply1 = authentication.newBuilder().setAuthentication("Streaming completed").build();
+					responseObserver.onNext(reply1);
 					responseObserver.onCompleted();
+					System.out.println("Authentication completed: no of messages received: " + count);
 				}
 
 					

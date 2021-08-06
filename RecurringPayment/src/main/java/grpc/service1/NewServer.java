@@ -14,6 +14,12 @@ public class NewServer {
 	public static void main(String[] args) throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
 		
+		int port = 50056;
+		String service_type = "_grpc._service1.local.";
+		String service_name = "GrpcServer";
+		SimpleServiceRegistration ssr = new SimpleServiceRegistration();
+		ssr.run(port, service_type, service_name);
+		
 		final NewServer ourServer = new NewServer();
 		ourServer.start();
 
@@ -22,8 +28,8 @@ public class NewServer {
 	private void start() throws IOException, InterruptedException {
 		// TODO Auto-generated method stub
 		System.out.println("Starting gRPC Server");
-		
 		int port = 50056;
+		
 		server = ServerBuilder.forPort(port).addService(new NewServerImpl()).build().start();
 		
 		System.out.println("Server running on port: " + port);
