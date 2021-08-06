@@ -1,6 +1,5 @@
 package grpc.service4;
 
-import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
 import javax.jmdns.ServiceInfo;
@@ -32,9 +31,9 @@ public class NewClient {
 			   
 			   newServiceBlockingStub bstub = newServiceGrpc.newBlockingStub(newChannel); 
 			   
-			   Iterator<alertResponse> response = bstub.accountAlerts(ar); 
+			   alertResponse response = bstub.accountAlerts(ar); 
 			   
-			   System.out.println(((alertResponseOrBuilder) response).getAlerts());
+			   System.out.println(response.getAlerts());
 			   
 			     newChannel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
 		
