@@ -40,6 +40,7 @@ public class NewServer {
 	
 	static class NewServerImpl extends newServiceImplBase {
 		
+		//Client streaming
 		@Override
 		public StreamObserver<credentials>generatePIN(StreamObserver<confirmation> responseObserver) {
 			System.out.println("inside streaming implementation");

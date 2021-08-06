@@ -41,6 +41,8 @@ public class NewServer {
 	// Extend abstract base class for our implementation
 		static class NewServerImpl extends newServiceImplBase {
 		
+			//Unary
+			
 			@Override
 			public void cancelRecurringPayment(cancelPayment request, StreamObserver<cancelled> responseObserver) {
 				
@@ -60,6 +62,8 @@ public class NewServer {
 				responseObserver.onCompleted();
 			}
 			
+			
+			//Client Streaming
 			@Override
 			public StreamObserver<paymentDetails>setRecurringPayment(StreamObserver<confirmation> responseObserver) {
 				System.out.println("inside streaming implementation");
