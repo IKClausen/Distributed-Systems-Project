@@ -83,7 +83,7 @@ public class NewClient {
 		ManagedChannel newChannel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
 		
 				
-		//create an asynchronous stub for the client streaming
+		//create an asynchronous stub 
 		newServiceStub asyncStub = newServiceGrpc.newStub(newChannel);
 		
 		
