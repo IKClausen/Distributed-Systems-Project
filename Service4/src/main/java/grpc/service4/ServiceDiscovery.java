@@ -46,7 +46,7 @@ public class ServiceDiscovery {
 
     
 	private void setPort(int port) {
-		// TODO Auto-generated method stub
+		
 		this.port = port; 
 		
 	}
@@ -56,7 +56,7 @@ public class ServiceDiscovery {
     	return serviceInfo; 
     }
 	private void setServiceInfo(ServiceInfo serviceInfo) {
-		// TODO Auto-generated method stub
+		
 		this.serviceInfo = serviceInfo; 
 		
 	}
@@ -81,7 +81,7 @@ public class ServiceDiscovery {
 		try {
 			Thread.sleep(10000);
 		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 		
@@ -92,7 +92,7 @@ public class ServiceDiscovery {
 		try {
 			jmdns.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return serviceInfo;
@@ -102,7 +102,7 @@ public class ServiceDiscovery {
 	}
 
 	public static ServiceInfo run(String service_type) {
-		// TODO Auto-generated method stub
+	
 		return null;
 	} 
 } 

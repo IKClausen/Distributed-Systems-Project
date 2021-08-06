@@ -13,7 +13,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import grpc.service3.viewBalance;
 import grpc.service4.*;
 import grpc.service4.newServiceGrpc.newServiceBlockingStub;
 import io.grpc.ManagedChannel;
@@ -110,8 +109,6 @@ private static newServiceBlockingStub blockingStub;
 		   JScrollPane scrollPane = new JScrollPane(textResponse); 
 		   panel_service_1.add(scrollPane); 
 		   
-		
-		
 		
 	}
 	

@@ -33,8 +33,9 @@ public class NewClient {
 			   
 			   alertResponse response = bstub.accountAlerts(ar); 
 			   
-			   System.out.println(response.getAlerts());
 			   
+			   
+			   System.out.println(response.getAlerts());
 			     newChannel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
 		
 			
