@@ -3,6 +3,8 @@ package grpc.service2;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+import javax.jmdns.ServiceInfo;
+
 import grpc.service2.newServiceGrpc.newServiceStub;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
@@ -12,8 +14,15 @@ public class NewClient {
 
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
-		int port = 50061;
-		String host ="localhost";
+		
+		ServiceInfo serviceInfo;
+		String service_type = "_grpc._service2.local.";
+		serviceInfo = SimpleServiceDiscovery.run(service_type);
+		int port = serviceInfo.getPort();
+		String host = "localhost";
+		
+		//int port = 50061;
+		
 		
 		ManagedChannel newChannel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
 		
