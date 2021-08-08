@@ -23,7 +23,7 @@ public class NewServer {
 	private void start() throws IOException, InterruptedException {
 	System.out.println("Starting gRPC Server"); 
 		
-		int port = 50051; 
+		int port = 50056; 
 	    String service_type = "_grpc._tcp.local.";
 		String service_name = "GrpcServer";
 		ServiceRegistration ssr = new ServiceRegistration(); 

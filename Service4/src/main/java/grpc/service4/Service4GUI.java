@@ -92,7 +92,7 @@ private static newServiceBlockingStub blockingStub;
 				   // adapting to method 
 				   
 				   alertRequest request = alertRequest.newBuilder().setRequest(accountA).build(); 
-				   alertResponse response = newServiceStub.accountAlerts(alerts); 
+				   alertResponse response = blockingStub.accountAlerts(response); 
 				   
 				  //  Populate the JTextArea 
 				   textResponse.append("Alert = Account is empty" + response.getAlerts());
